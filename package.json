@@ -1,0 +1,114 @@
+{
+	"name": "yryr",
+	"publisher": "zmj",
+	"displayName": "yryr",
+	"description": "Good",
+	"version": "0.0.2",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:yryr.helloWorld",
+		"onCommand:yryr.debug",
+		"onCommand:yryr.inputData",
+		"onView:yryr-will-mastering"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "yryr-explorer",
+					"title": "aiyryr",
+					"icon": "resource/yryr.svg"
+				}
+			]
+		},
+		"views": {
+			"explorer": [
+				{
+					"id": "yryr-will-mastering-main",
+					"name": "陌生单词"
+				}
+			],
+			"yryr-explorer": [
+				{
+					"id": "yryr-will-mastering",
+					"name": "yryr"
+				},
+				{
+					"id": "yryr-mastered",
+					"name": "andme"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "yryr.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "yryr.debug",
+				"title": "Debug"
+			},
+			{
+				"command": "yryr.inputData",
+				"title": "Input Data"
+			},
+			{
+				"command": "yryr.didMastered",
+				"title": "dv",
+				"icon": {
+					"light": "resource/right.svg",
+					"dark": "resource/right.svg"
+				}
+			},
+			{
+				"command": "yryr.willMastering",
+				"title": "budv",
+				"icon": {
+					"light": "resource/undo.svg",
+					"dark": "resource/undo.svg"
+				}
+			}
+		],
+		"menus": {
+			"view/item/context": [
+				{
+					"command": "yryr.didMastered",
+					"when": "view == yryr-will-mastering && viewItem == word",
+					"group": "inline"
+				},
+				{
+					"command": "yryr.willMastering",
+					"when": "view == yryr-mastered && viewItem == word",
+					"group": "inline"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.52.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.15.0",
+		"@typescript-eslint/eslint-plugin": "^4.9.0",
+		"@typescript-eslint/parser": "^4.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.1.2",
+		"vscode-test": "^1.4.1"
+	}
+}
