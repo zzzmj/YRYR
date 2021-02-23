@@ -3,7 +3,7 @@
 	"publisher": "zmj",
 	"displayName": "yryr",
 	"description": "Good",
-	"version": "0.0.2",
+	"version": "0.1.2",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
@@ -14,7 +14,8 @@
 		"onCommand:yryr.helloWorld",
 		"onCommand:yryr.debug",
 		"onCommand:yryr.inputData",
-		"onView:yryr-will-mastering"
+		"onView:yryr-will-mastering",
+		"onCommand:yryr.copy"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -51,8 +52,20 @@
 				"title": "Hello World"
 			},
 			{
+				"command": "yryr.copy",
+				"title": "Copy"
+			},
+			{
 				"command": "yryr.debug",
 				"title": "Debug"
+			},
+			{
+				"command": "yryr.refreshEntry",
+				"title": "Refresh",
+				"icon": {
+					"light": "resource/refresh.svg",
+					"dark": "resource/refresh.svg"
+				}
 			},
 			{
 				"command": "yryr.inputData",
@@ -73,9 +86,19 @@
 					"light": "resource/undo.svg",
 					"dark": "resource/undo.svg"
 				}
+			},{
+				"command": "yryr.read",
+				"title": "read"
 			}
 		],
 		"menus": {
+			"view/title": [
+				{
+					"command": "yryr.refreshEntry",
+					"when": "view == yryr-will-mastering",
+					"group": "navigation"
+				}
+			],
 			"view/item/context": [
 				{
 					"command": "yryr.didMastered",
@@ -99,16 +122,20 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.52.0",
 		"@types/glob": "^7.1.3",
 		"@types/mocha": "^8.0.4",
 		"@types/node": "^12.11.7",
-		"eslint": "^7.15.0",
+		"@types/vscode": "^1.52.0",
 		"@typescript-eslint/eslint-plugin": "^4.9.0",
 		"@typescript-eslint/parser": "^4.9.0",
+		"eslint": "^7.15.0",
 		"glob": "^7.1.6",
 		"mocha": "^8.1.3",
 		"typescript": "^4.1.2",
 		"vscode-test": "^1.4.1"
+	},
+	"dependencies": {
+		"iconv-lite": "^0.6.2",
+		"is-json": "^2.0.1"
 	}
 }
