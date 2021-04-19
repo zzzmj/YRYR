@@ -1,12 +1,15 @@
+import * as vscode from 'vscode';
 import WordProvider from './wordProvider';
 import { Word } from './types';
 import readPanel from './webview';
 
 
 class Words {
-    private wordList: Array<Word>;
-    private willMasteringList: Array<Word>;
-    private didMasteredList: Array<Word>;
+    public wordList: Array<Word>;
+    // 还没掌握的单词
+    public willMasteringList: Array<Word>;
+    // 掌握的单词
+    public didMasteredList: Array<Word>;
     // 暴露给外界.
     public willMasteringProvider;
     public didMasteredProvider;
@@ -21,6 +24,7 @@ class Words {
 
     // 初次加载数据到里面
     loadData(data: Array<Word>) {
+        this.wordList = data;
         this.willMasteringList = data;
         this.willMasteringProvider.loadData(data);
         this.didMasteredList = [];
@@ -41,6 +45,7 @@ class Words {
             [arr[i], arr[random]] = [arr[random], arr[i]];
         }
         this.refresh();
+        return arr;
     }
 
     // 更新数据
@@ -108,6 +113,10 @@ class Words {
 
                 // 添加新数据
                 this.updateData();
+
+                // 移到下一个
+                // let pos = Math.max(this.didMasteredList.indexOf(item.label) + 1, this.didMasteredList.length-1);
+                // vscode.commands.executeCommand('yryr.read', this.didMasteredList[pos].word);
             }
         } else {
             // this.toggle(item);
@@ -124,12 +133,8 @@ class Words {
             if (word) {
                 // 在掌握单词中过滤掉
                 this.didMasteredList = this.didMasteredList.filter(i => i.word !== item.label);
-
-                console.log('加上', word);
                 // 陌生单词中添加上
                 this.willMasteringList = this.willMasteringList.concat(word);
-                console.log('willMasteringList', this.willMasteringList);
-
                 // 添加新数据
                 this.updateData();
             }

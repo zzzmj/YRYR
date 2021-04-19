@@ -80,9 +80,9 @@ export const processText = (wordStr: string | undefined) => {
     let paraphrase = '';
     for (let i = 0; i < str.length; i++) {
         // 判断是否被[]包裹
-        if (str[i] === '[') {
+        if (str[i] === '{') {
             let j = 0;
-            while (str[i + j - 1] !== ']' && j < 100) {
+            while (str[i + j - 1] !== '}' && j < 100) {
                 paraphrase += str[i + j];
                 j++;
             }
@@ -118,5 +118,6 @@ export const processText = (wordStr: string | undefined) => {
     // for (let i = 0; i < wordJson.length; i++) {
     //     wordJson[i].visibility = 'hidden';
     // }
+    console.log('wordJson', wordJson);
     return wordJson;
 };

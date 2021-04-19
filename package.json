@@ -3,7 +3,7 @@
 	"publisher": "zmj",
 	"displayName": "yryr",
 	"description": "Good",
-	"version": "0.1.2",
+	"version": "0.1.5",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
@@ -14,6 +14,12 @@
 		"onCommand:yryr.helloWorld",
 		"onCommand:yryr.debug",
 		"onCommand:yryr.inputData",
+		"onCommand:yryr.counter",
+		"onCommand:yryr.showParaphrase",
+		"onCommand:yryr.nextWord",
+		"onCommand:yryr.preWord",
+		"onCommand:yryr.mastering",
+		"onCommand:yryr.notMastering",
 		"onView:yryr-will-mastering",
 		"onCommand:yryr.copy"
 	],
@@ -58,6 +64,30 @@
 			{
 				"command": "yryr.debug",
 				"title": "Debug"
+			},
+			{
+				"command": "yryr.counter",
+				"title": "Counter"
+			},
+			{
+				"command": "yryr.nextWord",
+				"title": "NextWord"
+			},
+			{
+				"command": "yryr.preWord",
+				"title": "PreWord"
+			},
+			{
+				"command": "yryr.showParaphrase",
+				"title": "ShowParaphrase"
+			},
+			{
+				"command": "yryr.mastering",
+				"title": "Mastering(掌握)"
+			},
+			{
+				"command": "yryr.notMastering",
+				"title": "notMastering(未掌握)"
 			},
 			{
 				"command": "yryr.refreshEntry",

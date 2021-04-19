@@ -5,8 +5,10 @@
     const vscode = acquireVsCodeApi();
     window.addEventListener('message', event => {
         const word = event.data;
+        console.log('word', word)
         $('#audio').src = `http://dict.youdao.com/dictvoice?type=0&audio=${word}`
         $('#audio').play()
+        console.log('发音成功了吗？', event.data)
         // const utterance = new SpeechSynthesisUtterance(word);
         // speechSynthesis.speak(utterance);
         vscode.postMessage(event.data);

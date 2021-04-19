@@ -1,0 +1,24 @@
+<h1>reading panel 请点击标签切换到代码页</h1>
+<audio id="audio"></audio>
+<button id="button">点击测试</button>
+<script>
+    const $ = (selector) => document.querySelector(selector)
+    // const test = () => {
+    //     $('#audio').src = `http://dict.youdao.com/dictvoice?type=0&audio=${word}`
+    //     $('#audio').play()
+    // }
+    $('#button').addEventListener('click', function() {
+        $('#audio').src = `http://dict.youdao.com/dictvoice?type=0&audio=hello`
+        $('#audio').play()
+
+        fetch('http://dict.e.opac.vip/dict.php?sw=book', {
+            mode: 'no-cors'
+        })
+        .then(response => {
+            console.log('response',response)
+            return response.json()
+        })
+        .then(json => console.log(json))
+        .catch(err => console.log('Request Failed', err)); 
+    })
+</script>
